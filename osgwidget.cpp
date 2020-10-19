@@ -110,7 +110,7 @@ OSGWidget::OSGWidget( QWidget* parent, Qt::WindowFlags flags ):
 
     osg::PositionAttitudeTransform *transform = new osg::PositionAttitudeTransform;
     transform->setPosition(osg::Vec3( 0.f, 0.f, 0.f ));
-    transform->setUpdateCallback(new SphereUpdateCallback());
+//    transform->setUpdateCallback(new SphereUpdateCallback());
     transform->addChild(geode);
 
 
