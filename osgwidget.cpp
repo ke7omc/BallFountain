@@ -32,9 +32,14 @@ public:
     virtual void operator()(osg::Node* node, osg::NodeVisitor* nv)
     {
         if(mUp)
+        {
             mCount++;
-        else
-            mCount--;
+        }
+
+//        else
+//        {
+//            mCount = 0;
+//        }
 
 
         osg::Vec3 position(0.f, 0.f, 10.0-mCount);
@@ -43,7 +48,7 @@ public:
 
         traverse(node, nv);
 
-        if(mCount==10 || mCount==0)
+        if(mCount==10 || mCount==-9)
             mUp=!mUp;
     }
 protected:
@@ -109,7 +114,7 @@ OSGWidget::OSGWidget( QWidget* parent, Qt::WindowFlags flags ):
     stateSet->setMode( GL_DEPTH_TEST, osg::StateAttribute::ON );
 
     osg::PositionAttitudeTransform *transform = new osg::PositionAttitudeTransform;
-    transform->setPosition(osg::Vec3( 0.f, 0.f, 9.f ));
+    transform->setPosition(osg::Vec3( 0.f, 0.f, -9.f ));
     transform->setUpdateCallback(new SphereUpdateCallback());
     transform->addChild(geode);
 
