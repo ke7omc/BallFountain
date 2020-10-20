@@ -42,7 +42,7 @@ public:
         }
 
 
-        osg::Vec3 position(0.f, 0.f, 10.0-mCount);
+        osg::Vec3 position(0.f, 0.f, 10.0-(mCount));
         osg::PositionAttitudeTransform *pat = dynamic_cast<osg::PositionAttitudeTransform *> (node);
         pat->setPosition(position);
 
@@ -56,7 +56,6 @@ public:
 protected:
     bool mUp{true};
     unsigned int mCount{0};
-    double mScaleStep{1.0};
 };
 
 
@@ -131,7 +130,7 @@ OSGWidget::OSGWidget( QWidget* parent, Qt::WindowFlags flags ):
     this->update();
 
     double framesPerSecond{30};
-    double timeStep{1.0/framesPerSecond};
+    double timeStep{1.0};
     double timerDurationInMilliSeconds{timeStep * 1000};
     mTimerId=startTimer(timerDurationInMilliSeconds);
 
