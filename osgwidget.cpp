@@ -36,10 +36,10 @@ public:
             mCount++;
         }
 
-//        else
-//        {
-//            mCount = 0;
-//        }
+        else
+        {
+            mCount = 0;
+        }
 
 
         osg::Vec3 position(0.f, 0.f, 10.0-mCount);
@@ -48,8 +48,10 @@ public:
 
         traverse(node, nv);
 
-        if(mCount==10 || mCount==-9)
+        if(mCount==20)
             mUp=!mUp;
+        else
+            mUp = true;
     }
 protected:
     bool mUp{true};
