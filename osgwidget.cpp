@@ -56,7 +56,7 @@ public:
 protected:
     bool mUp{true};
     unsigned int mCount{0};
-    double mScaleStep{1.0/30.0};
+    double mScaleStep{1.0};
 };
 
 
