@@ -37,13 +37,13 @@ public:
             mCount--;
 
 
-        osg::Vec3d scaleFactor(mScaleStep*mCount+1.0, 1.0, 1.0);
+        osg::Vec3 position(0.f, 0.f, 10.0-mCount);
         osg::PositionAttitudeTransform *pat = dynamic_cast<osg::PositionAttitudeTransform *> (node);
-        pat->setScale(scaleFactor);
+        pat->setPosition(position);
 
         traverse(node, nv);
 
-        if(mCount==30 || mCount==0)
+        if(mCount==10 || mCount==0)
             mUp=!mUp;
     }
 protected:
@@ -110,7 +110,7 @@ OSGWidget::OSGWidget( QWidget* parent, Qt::WindowFlags flags ):
 
     osg::PositionAttitudeTransform *transform = new osg::PositionAttitudeTransform;
     transform->setPosition(osg::Vec3( 0.f, 0.f, 9.f ));
-//    transform->setUpdateCallback(new SphereUpdateCallback());
+    transform->setUpdateCallback(new SphereUpdateCallback());
     transform->addChild(geode);
 
 
