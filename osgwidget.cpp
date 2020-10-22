@@ -130,7 +130,7 @@ OSGWidget::OSGWidget( QWidget* parent, Qt::WindowFlags flags ):
     this->update();
 
     double framesPerSecond{30};
-    double timeStep{1.0};
+    double timeStep{1.0/framesPerSecond};
     double timerDurationInMilliSeconds{timeStep * 1000};
     mTimerId=startTimer(timerDurationInMilliSeconds);
 
