@@ -23,6 +23,10 @@
 #include <QKeyEvent>
 #include <QPainter>
 #include <QWheelEvent>
+class PhysicsBall
+{
+
+};
 
 class SphereUpdateCallback: public osg::NodeCallback
 {
@@ -54,10 +58,15 @@ public:
             mUp = true;
     }
 protected:
+    PhysicsBall *mBall{nullptr};
     bool mUp{true};
     unsigned int mCount{0};
 };
 
+SphereUpdateCallback::SphereUpdateCallback(PhysicsBall* ball):mBall{ball}
+{
+
+}
 
 
 OSGWidget::OSGWidget( QWidget* parent, Qt::WindowFlags flags ):
