@@ -1,4 +1,5 @@
 #include "OSGWidget.h"
+#include "PhysicsLibrary.hpp"
 
 #include <osg/Camera>
 #include <osg/DisplaySettings>
@@ -131,7 +132,7 @@ OSGWidget::OSGWidget( QWidget* parent, Qt::WindowFlags flags ):
 
     double framesPerSecond{30};
     double timeStep{1.0};
-    double timerDurationInMilliSeconds{timeStep * 1000};
+    double timerDurationInMilliSeconds{timeStep/framesPerSecond * 1000};
     mTimerId=startTimer(timerDurationInMilliSeconds);
 
 }
