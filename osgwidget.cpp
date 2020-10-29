@@ -32,31 +32,36 @@ public:
 
     virtual void operator()(osg::Node* node, osg::NodeVisitor* nv)
     {
-        if(mUp)
+        if(resetBall)
         {
-            mCount++;
+            totalTime = 0.0;
         }
 
         else
         {
-            mCount = 0;
+            totalTime = totalTime + (1.0/30.0);
         }
 
-
-        osg::Vec3 position(0.f, 0.f, 10.0-(mCount));
+        location = position_using_gravity_as_only_body_force(gravity,totalTime,initialVelocity,initialPosition);
+        osg::Vec3 position(0.f, 0.f, location);
         osg::PositionAttitudeTransform *pat = dynamic_cast<osg::PositionAttitudeTransform *> (node);
         pat->setPosition(position);
 
         traverse(node, nv);
 
-        if(mCount==20)
-            mUp=!mUp;
+        if(location<=-10.0)
+            resetBall = true;
         else
-            mUp = true;
+            resetBall = false;
     }
 protected:
-    bool mUp{true};
+    bool resetBall{false};
     unsigned int mCount{0};
+    double totalTime{0.0};
+    double gravity{-9.8};
+    double initialVelocity{18.0};
+    double initialPosition{-10.0};
+    double location{0.0};
 };
 
 
