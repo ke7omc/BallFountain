@@ -15,37 +15,39 @@ SET(CMAKE_AUTOMOC ON)
 SET(CMAKE_AUTOUIC ON)
 SET(CMAKE_AUTORCC ON)
 
-FIND_PACKAGE(GTEST REQUIRED)
+FIND_PACKAGE(GTest REQUIRED)
 include_directories(${GTEST_INCLUDE_DIRS})
 
-
-set(MYSOURCE
-    main.cpp
-    mainwindow.cpp
-    mainwindow.h
-    mainwindowform.ui
-    osgwidget.h
-    osgwidget.cpp
-    PhysicsLibraryTests.cpp
-    )
-
-add_executable(${PROJECT_NAME}
-    ${MYSOURCE}
-    )
-
+#Physics Library
 add_library(${PROJECT_NAME}_LIBRARIES STATIC
     PhysicsLibrary.hpp
     PhysicsLibrary.cpp
     )
 
+#Physics Library unit test executable
+add_executable(${PROJECT_NAME}_unit_tests
+    PhysicsLibraryOnlyGravityUnitTests.cpp
+    )
+
+target_link_libraries(${PROJECT_NAME}_unit_tests
+    ${GTEST_LIBRARIES}
+    ${GTEST_MAIN_LIBRARIES}
+    ${PROJECT_NAME}_LIBRARIES
+)
+
+#Qt and OSG Application
+add_executable(${PROJECT_NAME}
+     main.cpp
+     mainwindow.cpp
+     mainwindow.h
+     mainwindowform.ui
+     osgwidget.h
+     osgwidget.cpp
+    )
 
 target_link_libraries(${PROJECT_NAME}
     ${OPENSCENEGRAPH_LIBRARIES}
-    ${GTEST_LIBRARIES}
-    ${GTEST_MAIN_LIBRARIES}
     Qt5::Widgets
     Qt5::Gui
+    ${PROJECT_NAME}_LIBRARIES
 )
-
-
-
