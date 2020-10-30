@@ -22,6 +22,7 @@ include_directories(${GTEST_INCLUDE_DIRS})
 add_library(${PROJECT_NAME}_LIBRARIES STATIC
     PhysicsLibrary.hpp
     PhysicsLibrary.cpp
+<<<<<<< HEAD
     )
 
 #Physics Library unit test executable
@@ -51,3 +52,34 @@ target_link_libraries(${PROJECT_NAME}
     Qt5::Gui
     ${PROJECT_NAME}_LIBRARIES
 )
+=======
+    )
+
+#Physics Library unit test executable
+add_executable(${PROJECT_NAME}_unit_tests
+    PhysicsLibraryTests.cpp
+    )
+
+target_link_libraries(${PROJECT_NAME}_unit_tests
+    ${GTEST_LIBRARIES}
+    ${GTEST_MAIN_LIBRARIES}
+    ${PROJECT_NAME}_LIBRARIES
+)
+
+#Qt and OSG Application
+add_executable(${PROJECT_NAME}
+     main.cpp
+     mainwindow.cpp
+     mainwindow.h
+     mainwindowform.ui
+     osgwidget.h
+     osgwidget.cpp
+    )
+
+target_link_libraries(${PROJECT_NAME}
+    ${OPENSCENEGRAPH_LIBRARIES}
+    Qt5::Widgets
+    Qt5::Gui
+    ${PROJECT_NAME}_LIBRARIES
+)
+>>>>>>> main
