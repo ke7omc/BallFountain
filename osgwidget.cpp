@@ -1,6 +1,7 @@
 #include "osgwidget.h"
 #include "PhysicsLibrary.hpp"
 #include "SphereUpdateCallback.h"
+#include "mainwindow.h"
 
 #include <osg/Camera>
 #include <osg/DisplaySettings>
@@ -26,57 +27,8 @@
 #include <QPainter>
 #include <QWheelEvent>
 
-//class SphereUpdateCallback: public osg::NodeCallback
-//{
-//public slots:
-//    void changeCOR(int value)
-//    {
-//        coefficientOfRestitution = value;
-//    }
-//public:
-//    double coefficientOfRestitution = 0.8;
-//    SphereUpdateCallback(){}
 
 
-//    virtual void operator()(osg::Node* node, osg::NodeVisitor* nv)
-//    {
-//        if(resetBall)
-//        {
-//            totalTime = 0.0;
-//        }
-
-//        else
-//        {
-//            totalTime = totalTime + (1.0/30.0);
-//        }
-
-//        location = position_using_gravity_as_only_body_force(gravity,totalTime,initialVelocity,initialPosition);
-//        osg::Vec3 position(0.f, 0.f, location);
-//        osg::PositionAttitudeTransform *pat = dynamic_cast<osg::PositionAttitudeTransform *> (node);
-//        pat->setPosition(position);
-
-//        traverse(node, nv);
-
-//        if(location<-10.0)
-//            resetBall = true;
-//        else
-//            resetBall = false;
-//    }
-//protected:
-//    bool resetBall{false};
-//    unsigned int mCount{0};
-//    double totalTime{0.0};
-//    double gravity{-9.8};
-//    double initialVelocity{18.0};
-//    double initialPosition{-10.0};
-//    double location{0.0};
-//};
-
-//SphereUpdateCallback newBall;
-//SphereUpdateCallback *ptr = &newBall;
-
-SphereUpdateCallback newBall;
-SphereUpdateCallback *ptr = &newBall;
 
 OSGWidget::OSGWidget( QWidget* parent, Qt::WindowFlags flags ):
     QOpenGLWidget{ parent,flags },

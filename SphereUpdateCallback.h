@@ -38,7 +38,7 @@ public slots:
 
 public:
     SphereUpdateCallback(){}
-
+    double coefficientOfRestitution{0.8};
 
     virtual void operator()(osg::Node* node, osg::NodeVisitor* nv)
     {
@@ -46,6 +46,8 @@ public:
         {
             totalTime = 0.0;
             initialVelocity = initialVelocity*coefficientOfRestitution;
+            if (initialVelocity < 0.01)
+                initialVelocity = 0;
         }
 
         else
@@ -73,7 +75,7 @@ protected:
     double initialVelocity{18.0};
     double initialPosition{-10.0};
     double location{0.0};
-    double coefficientOfRestitution{0.8};
+
 };
 
 #endif // SPHEREUPDATECALLBACK_H
