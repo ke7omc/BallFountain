@@ -18,6 +18,7 @@ public:
              Qt::WindowFlags f = 0 );
 
   virtual ~OSGWidget();
+
 protected:
   virtual void paintEvent( QPaintEvent* paintEvent );
   virtual void paintGL();

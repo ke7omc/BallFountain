@@ -21,6 +21,7 @@ public:
 
 public slots:
     void on_actionExit_triggered();
+
 private:
     Ui::MainWindowForm *mMainWindowUI;
 
