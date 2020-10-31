@@ -22,6 +22,9 @@ public:
 public slots:
     void on_actionExit_triggered();
 
+private slots:
+    void on_horizontalScrollBar_valueChanged(int value);
+
 private:
     Ui::MainWindowForm *mMainWindowUI;
 

@@ -110,7 +110,7 @@ OSGWidget::OSGWidget( QWidget* parent, Qt::WindowFlags flags ):
 OSGWidget::~OSGWidget()
 {
     killTimer(mTimerId);
-    delete mViewer;
+//    delete mViewer;
 }
 
 void OSGWidget::timerEvent(QTimerEvent *)

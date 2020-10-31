@@ -2,6 +2,7 @@
 #define MEEN_570_OSGWIDGET
 
 #include <QOpenGLWidget>
+#include <SphereUpdateCallback.h>
 
 #include <osg/ref_ptr>
 #include <osgViewer/GraphicsWindow>
@@ -18,6 +19,8 @@ public:
              Qt::WindowFlags f = 0 );
 
   virtual ~OSGWidget();
+  SphereUpdateCallback newBall;
+  SphereUpdateCallback *ptr = &newBall;
 
 protected:
   virtual void paintEvent( QPaintEvent* paintEvent );
@@ -36,5 +39,7 @@ private:
   osg::ref_ptr<osg::Group> mRoot;
   int mTimerId{0};
 };
+
+
 
 #endif
