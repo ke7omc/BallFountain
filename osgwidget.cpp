@@ -30,6 +30,7 @@ class SphereUpdateCallback: public osg::NodeCallback
 public:
     SphereUpdateCallback(){}
 
+
     virtual void operator()(osg::Node* node, osg::NodeVisitor* nv)
     {
         if(resetBall)
@@ -64,7 +65,8 @@ protected:
     double location{0.0};
 };
 
-
+SphereUpdateCallback newBall;
+SphereUpdateCallback *ptr = &newBall;
 
 OSGWidget::OSGWidget( QWidget* parent, Qt::WindowFlags flags ):
     QOpenGLWidget{ parent,flags },
@@ -122,7 +124,7 @@ OSGWidget::OSGWidget( QWidget* parent, Qt::WindowFlags flags ):
 
     osg::PositionAttitudeTransform *transform = new osg::PositionAttitudeTransform;
     transform->setPosition(osg::Vec3( 0.f, 0.f, -9.f ));
-    transform->setUpdateCallback(new SphereUpdateCallback());
+    transform->setUpdateCallback(ptr);
     transform->addChild(geode);
 
 
