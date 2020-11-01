@@ -10,7 +10,6 @@ MainWindow::MainWindow(QWidget *parent) :
     mMainWindowUI{new Ui::MainWindowForm}
 {
     mMainWindowUI->setupUi(this);
-//    QObject::connect(mMainWindowUI->horizontalScrollBar,SIGNAL(valueChanged(int)),physrep.coefficientOfRestitution,SLOT(setCOR(int)));
 }
 
 MainWindow::~MainWindow()
@@ -23,11 +22,21 @@ void MainWindow::on_actionExit_triggered()
     QApplication::quit();
 }
 
-
-
-void MainWindow::on_horizontalScrollBar_valueChanged(int value)
+void MainWindow::on_horizontalScrollBarChangeCoefficientOfRestitution_valueChanged(int value)
 {
     OSGWidget *osgWidget = qobject_cast<OSGWidget *>(findChild<QObject *>("widget"));
     osgWidget->newBall.coefficientOfRestitution = value/100.0;
+}
 
+void MainWindow::on_horizontalScrollBarChangeInitialVelocity_valueChanged(int value)
+{
+    OSGWidget *osgWidget = qobject_cast<OSGWidget *>(findChild<QObject *>("widget"));
+    osgWidget->newBall.initialVelocity = value/1.0;
+}
+
+
+void MainWindow::on_horizontalScrollBarChangeBallSize_valueChanged(int value)
+{
+    OSGWidget *osgWidget = qobject_cast<OSGWidget *>(findChild<QObject *>("widget"));
+    osgWidget->newBall.ballSize = value/10.0;
 }

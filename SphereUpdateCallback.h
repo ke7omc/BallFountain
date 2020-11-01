@@ -39,6 +39,9 @@ public slots:
 public:
     SphereUpdateCallback(){}
     double coefficientOfRestitution{0.8};
+    double initialVelocity{18.0};
+    double gravity{-9.8};
+    double ballSize{1.0};
 
     virtual void operator()(osg::Node* node, osg::NodeVisitor* nv)
     {
@@ -71,8 +74,6 @@ protected:
     bool resetBall{false};
     unsigned int mCount{0};
     double totalTime{0.0};
-    double gravity{-9.8};
-    double initialVelocity{18.0};
     double initialPosition{-10.0};
     double location{0.0};
 

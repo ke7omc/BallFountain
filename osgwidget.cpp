@@ -69,7 +69,7 @@ OSGWidget::OSGWidget( QWidget* parent, Qt::WindowFlags flags ):
     mViewer->realize();
     mView->home();
 
-    osg::Sphere* sphere    = new osg::Sphere( osg::Vec3( 0.f, 0.f, 0.f ), 2.0f );
+    osg::Sphere* sphere    = new osg::Sphere( osg::Vec3( 0.f, 0.f, 0.f ), newBall.ballSize );
     osg::ShapeDrawable* sd = new osg::ShapeDrawable( sphere );
     sd->setColor( osg::Vec4( 1.f, 0.f, 0.f, 1.f ) );
     sd->setName( "Sphere" );
@@ -110,7 +110,6 @@ OSGWidget::OSGWidget( QWidget* parent, Qt::WindowFlags flags ):
 OSGWidget::~OSGWidget()
 {
     killTimer(mTimerId);
-//    delete mViewer;
 }
 
 void OSGWidget::timerEvent(QTimerEvent *)

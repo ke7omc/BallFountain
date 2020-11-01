@@ -23,7 +23,10 @@ public slots:
     void on_actionExit_triggered();
 
 private slots:
-    void on_horizontalScrollBar_valueChanged(int value);
+    void on_horizontalScrollBarChangeCoefficientOfRestitution_valueChanged(int value);
+
+    void on_horizontalScrollBarChangeInitialVelocity_valueChanged(int value);
+    void on_horizontalScrollBarChangeBallSize_valueChanged(int value);
 
 private:
     Ui::MainWindowForm *mMainWindowUI;
