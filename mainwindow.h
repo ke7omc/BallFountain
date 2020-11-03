@@ -28,6 +28,10 @@ private slots:
     void on_horizontalScrollBarChangeInitialVelocity_valueChanged(int value);
     void on_horizontalScrollBarChangeBallSize_valueChanged(int value);
 
+    void on_pushButtonResetProgram_clicked(bool checked);
+
+    void on_horizontalScrollBarInitialShootingAngle_valueChanged(int value);
+
 private:
     Ui::MainWindowForm *mMainWindowUI;
 

@@ -44,6 +44,7 @@ add_executable(${PROJECT_NAME}
      osgwidget.h
      osgwidget.cpp
      SphereUpdateCallback.h
+     PhysicsRepresentationOfBall.h
     )
 
 target_link_libraries(${PROJECT_NAME}
