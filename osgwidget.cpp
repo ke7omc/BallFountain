@@ -92,6 +92,7 @@ OSGWidget::OSGWidget( QWidget* parent, Qt::WindowFlags flags ):
 
 
 
+
     mRoot->addChild(transform);
 
     this->setFocusPolicy( Qt::StrongFocus );

@@ -53,3 +53,9 @@ void MainWindow::on_horizontalScrollBarInitialShootingAngle_valueChanged(int val
     OSGWidget *osgWidget = qobject_cast<OSGWidget *>(findChild<QObject *>("widget"));
     osgWidget->newBall.angleOfBallShoot = value;
 }
+
+void MainWindow::on_horizontalScrollBar_valueChanged(int value)
+{
+    OSGWidget *osgWidget = qobject_cast<OSGWidget *>(findChild<QObject *>("widget"));
+    osgWidget->newBall.gravity = value*-1.0;
+}

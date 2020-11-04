@@ -27,6 +27,7 @@ add_library(${PROJECT_NAME}_LIBRARIES STATIC
 #Physics Library unit test executable
 add_executable(${PROJECT_NAME}_unit_tests
     PhysicsLibraryOnlyGravityUnitTests.cpp
+    PhysicsLibraryGravityAndDragUnitTests.cpp
     )
 
 target_link_libraries(${PROJECT_NAME}_unit_tests

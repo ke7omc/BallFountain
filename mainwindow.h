@@ -32,6 +32,8 @@ private slots:
 
     void on_horizontalScrollBarInitialShootingAngle_valueChanged(int value);
 
+    void on_horizontalScrollBar_valueChanged(int value);
+
 private:
     Ui::MainWindowForm *mMainWindowUI;
 

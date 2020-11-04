@@ -24,7 +24,6 @@ public:
   virtual ~OSGWidget();
   SphereUpdateCallback newBall;
   SphereUpdateCallback *ptr = &newBall;
-  thisclass ball;
 
 protected:
   virtual void paintEvent( QPaintEvent* paintEvent );
@@ -42,6 +41,7 @@ private:
   osg::ref_ptr<osgViewer::View> mView;
   osg::ref_ptr<osg::Group> mRoot;
   int mTimerId{0};
+  int mTimerId2{0};
 };
 
 #endif

@@ -49,6 +49,10 @@ public:
     bool resetProgram{true};
     double initialVelocityInYDirection{initialVelocity*sin(angleOfBallShoot*3.1415/180)};
     double initialVelocityInXDirection{initialVelocity*cos(angleOfBallShoot*3.1415/180)};
+    double fluidDensity{1.16};
+    double previousVelocityInXDirection = initialVelocityInXDirection;
+    double previousVelocityInYDirection = initialVelocityInYDirection;
+    double mass{1};
 
     virtual void operator()(osg::Node* node, osg::NodeVisitor* nv)
     {
@@ -79,6 +83,9 @@ public:
         {
             totalTime = totalTime + (1.0/30.0);
         }
+
+        previousVelocityInXDirection = calculate_ball_velocity(mass,0,previousVelocityInXDirection,totalTime,fluidDensity,initialVelocityInXDirection);
+        previousVelocityInYDirection = calculate_ball_velocity(mass,gravity,previousVelocityInYDirection,totalTime,fluidDensity,initialVelocityInYDirection);
 
         locationInTheYDirection = position_using_gravity_as_only_body_force(gravity,totalTime,initialVelocityInYDirection,initialYPosition);
         locationInTheXDirection = position_using_gravity_as_only_body_force(0,totalTime,initialVelocityInXDirection,initialXPosition);
